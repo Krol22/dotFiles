@@ -8,6 +8,10 @@ print ('{ "version": 1 , "click_events": true}', end="")
 print ('[', end="")
 print ('[]', end="")
 
+soundColor = '';
+powerColor = '';
+dateTimeColor = '';
+
 sleep =1 
 session_bus = dbus.SessionBus()
 
@@ -97,7 +101,7 @@ def musicMpd():
         print('{"name":"music","full_text":""}')
 
 def disc():
-    freeSpace = subprocess.check_output("df -h | grep /dev/sda8 | cut -d\" \" -f11", shell=True)
+    freeSpace = subprocess.check_output("df -h | grep /dev/sda1 | cut -d\" \" -f12", shell=True)
     freeSpace = str(freeSpace)[2:len(freeSpace) + 1]
 
     print(',{"color":"#cb4b16", "name":"disc", "full_text" : ": ',freeSpace,'"}'),
