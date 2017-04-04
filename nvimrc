@@ -22,10 +22,9 @@ Plug 'othree/javascript-libraries-syntax.vim',
 Plug 'leafgarland/typescript-vim',
 Plug 'burnettk/vim-angular',
 Plug 'Chiel92/vim-autoformat',
-Plug 'digitaltoad/vim-pug'
+Plug 'digitaltoad/vim-pug',
 
 " snippets
-
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
@@ -38,8 +37,13 @@ Plug 'Yggdroot/indentLine',
 Plug 'MarcWeber/vim-addon-mw-utils',
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' },
 Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
+
+" Basic Configuration
+
+let mapleader = ","
 
 set number
 set relativenumber
@@ -49,21 +53,17 @@ set encoding=utf8
 
 set t_Co=256
 
-"set background=light
-"colorscheme TrippingRobot
-"colorscheme monokai
-"colorscheme Dev_Delight
-"set background=light
-"let g:solarized_termcolors=256
-"set background=dark
-
 colorscheme gruvbox
 let g:gruvbox_italic=1
 set background=dark
 
-syntax enable
+syntax on
 
-let mapleader = ","
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
+" Launch NerdTree on startup && bind key 
 
 autocmd vimenter * NERDTree
 imap <F3> <c-[> :NERDTreeToggle<CR>
@@ -88,7 +88,7 @@ nmap <silent> tj :tabprev<CR>
 nmap <silent> <C-q> :q <CR>
 nmap <silent> <C-s> :w <CR>
 
-imap <C-J> <Plug>snipMateNextOrTrigger
+" imap <C-J> <Plug>snipMateNextOrTrigger
 
 " change background color
 
@@ -124,40 +124,45 @@ let g:used_javascript_libs = 'angularjs, jasmine, angularui, angularuirouter, jq
 """"""""""""""""""""""
 " NERDTREE HIGHLIGTHS "
 """""""""""""""""""""""
+
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
   exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-call NERDTreeHighlightFile('pug', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('ts', 'Brown', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('java', 'Magenta', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('txt', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('pdf', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('vim', 'green', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('sh', 'green', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('png', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('jpg', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('bmp', 'blue', 'none', '#3366FF', '#151515')
+function! NERDTreeAddColors()
+  call NERDTreeHighlightFile('pug', 'green', 'none', 'green', '#151515')
+  call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+  call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+  call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+  call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+  call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+  call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+  call NERDTreeHighlightFile('ts', 'Brown', 'none', '#ffa500', '#151515')
+  call NERDTreeHighlightFile('java', 'Magenta', 'none', '#ffa500', '#151515')
+  call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+  call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
+  call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
+  call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
+  call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
+  call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+  call NERDTreeHighlightFile('txt', 'Gray', 'none', '#686868', '#151515')
+  call NERDTreeHighlightFile('pdf', 'Red', 'none', '#ffa500', '#151515')
+  call NERDTreeHighlightFile('vim', 'green', 'none', '#ffa500', '#151515')
+  call NERDTreeHighlightFile('sh', 'green', 'none', '#ffa500', '#151515')
+  call NERDTreeHighlightFile('png', 'blue', 'none', '#3366FF', '#151515')
+  call NERDTreeHighlightFile('jpg', 'blue', 'none', '#3366FF', '#151515')
+  call NERDTreeHighlightFile('bmp', 'blue', 'none', '#3366FF', '#151515')
 
-if $background=='dark' 
-  call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('xml', 'yellow', 'none', 'yellow', '#151515')
-endif
+  if $background=='dark' 
+    call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('xml', 'yellow', 'none', 'yellow', '#151515')
+  endif
+endfunction
+
+call NERDTreeAddColors()
