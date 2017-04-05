@@ -12,6 +12,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin',{ 'on': 'NERDTreeToggle' }
+Plug 'ryanoasis/vim-devicons'
 
 " frontend development
 Plug 'c0r73x/neotags.nvim',
@@ -53,9 +54,10 @@ set encoding=utf8
 
 set t_Co=256
 
-colorscheme gruvbox
 let g:gruvbox_italic=1
+colorscheme gruvbox
 set background=dark
+let g:gruvbox_contrast_dark='hard'
 
 syntax on
 
