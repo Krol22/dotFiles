@@ -7,6 +7,7 @@ call plug#begin ('~/.vim/plugged')
 Plug 'morhetz/gruvbox',
 Plug 'vim-airline/vim-airline',
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'mhinz/vim-startify'
 
 " nerdtree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -67,7 +68,7 @@ set undodir=~/.vim/undo//
 
 " Launch NerdTree on startup && bind key 
 
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 imap <F3> <c-[> :NERDTreeToggle<CR>
 vmap <F3> :NERDTreeToggle<CR>
 nmap <F3> :NERDTreeToggle<CR>
@@ -75,7 +76,7 @@ let NERDTreeChDirMode = 2
 let NERDTreeShowBookmarks = 0
 
 """""""""""""""""""
-" BASIC SHORTCUTS "
+" KEYS MAPPING    "
 """""""""""""""""""
 
 nmap <silent> <C-h> :winc h<CR>
@@ -89,6 +90,9 @@ nmap <silent> tj :tabprev<CR>
 
 nmap <silent> <C-q> :q <CR>
 nmap <silent> <C-s> :w <CR>
+
+nnoremap <leader>t :vsplit +terminal<CR>
+tnoremap <esc> <c-\><c-n>
 
 " imap <C-J> <Plug>snipMateNextOrTrigger
 
