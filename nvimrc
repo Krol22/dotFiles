@@ -66,6 +66,8 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+
 " Launch NerdTree on startup && bind key 
 
 " autocmd vimenter * NERDTree
