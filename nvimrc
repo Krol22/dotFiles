@@ -8,6 +8,7 @@ Plug 'morhetz/gruvbox',
 Plug 'vim-airline/vim-airline',
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'mhinz/vim-startify'
+Plug 'jelera/vim-javascript-syntax'
 
 " nerdtree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -55,10 +56,12 @@ set encoding=utf8
 
 set t_Co=256
 
-let g:gruvbox_italic=1
-colorscheme gruvbox
-set background=dark
-let g:gruvbox_contrast_dark='hard'
+" let g:gruvbox_italic=1
+" colorscheme gruvbox
+" set background=dark
+" let g:gruvbox_contrast_dark='hard'
+
+colorscheme codesweets
 
 syntax on
 
@@ -93,7 +96,7 @@ nmap <silent> tj :tabprev<CR>
 nmap <silent> <C-q> :q <CR>
 nmap <silent> <C-s> :w <CR>
 
-nnoremap <leader>t :vsplit +terminal<CR>
+nnoremap <leader>t :split +terminal<CR>
 tnoremap <esc> <c-\><c-n>
 
 " imap <C-J> <Plug>snipMateNextOrTrigger
