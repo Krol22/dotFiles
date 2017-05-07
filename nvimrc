@@ -6,9 +6,9 @@ call plug#begin ('~/.vim/plugged')
 " apperance
 Plug 'morhetz/gruvbox',
 Plug 'vim-airline/vim-airline',
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'mhinz/vim-startify'
-Plug 'jelera/vim-javascript-syntax'
+Plug 'NLKNguyen/papercolor-theme',
+Plug 'mhinz/vim-startify',
+Plug 'jelera/vim-javascript-syntax',
 
 " nerdtree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -39,8 +39,8 @@ Plug 'neomake/neomake',
 Plug 'Yggdroot/indentLine',
 Plug 'MarcWeber/vim-addon-mw-utils',
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' },
-Plug 'jiangmiao/auto-pairs'
-Plug 'sheerun/vim-polyglot'
+Plug 'jiangmiao/auto-pairs',
+Plug 'sheerun/vim-polyglot',
 
 call plug#end()
 
@@ -80,6 +80,11 @@ nmap <F3> :NERDTreeToggle<CR>
 let NERDTreeChDirMode = 2
 let NERDTreeShowBookmarks = 0
 
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+
 """""""""""""""""""
 " KEYS MAPPING    "
 """""""""""""""""""
@@ -103,7 +108,18 @@ tnoremap <esc> <c-\><c-n>
 
 " change background color
 
-map <Leader>bg :let &background = ( &background == "dark" ? "light" : "dark") <CR>
+" map <Leader>bg :let &background = ( &background == "dark" ? "light" : "dark") <CR>
+map <Leader>bg :call ChangeTheme() <CR>
+
+:function ChangeTheme()
+  :if (&background == "dark")
+    :colorscheme gruvbox
+    :let &background = "light"
+  :else 
+    :colorscheme codesweets
+    :let &background = "dark"
+  :endif
+:endfunction
 
 """""""""""
 " NEOMAKE "
