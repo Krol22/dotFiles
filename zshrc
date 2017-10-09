@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/krol22/.oh-my-zsh
+export ANDROID_HOME=/home/krol22/Android/Sdk
 
 alias vim="stty stop '' -ixoff ; vim"
 alias cp="cp -vi"

@@ -14,7 +14,7 @@ Plug 'jelera/vim-javascript-syntax',
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin',{ 'on': 'NERDTreeToggle' }
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons',
 
 " frontend development
 Plug 'c0r73x/neotags.nvim',
@@ -28,12 +28,13 @@ Plug 'Chiel92/vim-autoformat',
 Plug 'digitaltoad/vim-pug',
 
 " snippets
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
+Plug 'MarcWeber/vim-addon-mw-utils',
+Plug 'tomtom/tlib_vim',
+Plug 'garbas/vim-snipmate',
+Plug 'honza/vim-snippets',
 
 " utils
+Plug 'ctrlpvim/ctrlp.vim',
 Plug 'Raimondi/delimitMate',
 Plug 'neomake/neomake',
 Plug 'Yggdroot/indentLine',
@@ -50,7 +51,7 @@ let mapleader = ","
 
 set number
 set relativenumber
-set tabstop=2 expandtab shiftwidth=2
+set tabstop=4 expandtab shiftwidth=4
 set formatoptions-=cro
 set encoding=utf8
 
@@ -138,6 +139,11 @@ let g:neomake_javascript_jshint_maker = {
       \ }
 
 let g:neomake_javascript_enabled_makers = ['eslint']
+
+" CtrlP conifig
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 """"""""""""""
 " OTHER SHIT "
